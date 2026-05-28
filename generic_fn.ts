@@ -26,14 +26,28 @@ const words = ['hello', 'world', 'type']
 //     return arr.map(transformer)
 // }
 
-const mapArray = <T, B>(arr: T[], transform: (el: T) => B): B[] => {
-    return arr.map(transform)
+// const mapArray = <T, B>(arr: T[], transform: (el: T) => B): B[] => {
+//     return arr.map(transform)
+// }
+//
+// const transformNumberToString = (num: number) => `Number: ${num}`
+//
+// const transformStringToNumber = (word: string) => word.length
+//
+// console.log(mapArray(numbers, transformNumberToString))
+// console.log(mapArray(words, transformStringToNumber))
+
+const updateArray = <T>(arr: T[], value: T): T[] => {
+    if(arr.includes(value)) return arr
+    return [...arr, value]
 }
 
-const transformNumberToString = (num: number) => `Number: ${num}`
+// Строки
+const stringArray = ["apple", "banana", "cherry"]
+console.log(updateArray(stringArray, "banana")) // ['apple', 'banana', 'cherry']
+console.log(updateArray(stringArray, "strawberry")) // ['apple', 'banana', 'cherry', 'strawberry']
 
-const transformStringToNumber = (word: string) => word.length
-
-console.log(mapArray(numbers, transformNumberToString))
-console.log(mapArray(words, transformStringToNumber))
-
+// Числа
+const numberArray = [1, 2, 3]
+console.log(updateArray(numberArray, 2)) // [1, 2, 3]
+console.log(updateArray(numberArray, 4)) // [1, 2, 3, 4]
