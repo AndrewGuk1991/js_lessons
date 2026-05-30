@@ -55,6 +55,37 @@
 // // console.log(opel.stopEngine === bmw.stopEngine)
 
 
+// class Car {
+//     #wheels = 4
+//
+//     constructor(brand, maxSpeed) {
+//         this.brand = brand
+//         this.maxSpeed = maxSpeed
+//     }
+//
+//     startEngine () {
+//         console.log(`${this.brand} started`)
+//     }
+//
+//     setWheels (value) {
+//         if (value > 5) {
+//             throw Error(`Value should be <= 5`)
+//         }
+//         this.#wheels = value
+//     }
+//
+//     getWheels () {
+//         return this.#wheels
+//     }
+//
+// }
+//
+// const bmw = new Car('bmw', 200)
+// console.log(bmw.getWheels())
+// bmw.setWheels(5)
+// console.log(bmw.getWheels())
+// bmw.setWheels(6)
+
 class Car {
     #wheels = 4
 
@@ -67,21 +98,21 @@ class Car {
         console.log(`${this.brand} started`)
     }
 
-    setWheels (value) {
+    set wheels (value) {
         if (value > 5) {
             throw Error(`Value should be <= 5`)
         }
         this.#wheels = value
     }
 
-    getWheels () {
+    get wheels () {
         return this.#wheels
     }
 
 }
 
 const bmw = new Car('bmw', 200)
-console.log(bmw.getWheels())
-bmw.setWheels(5)
-console.log(bmw.getWheels())
-bmw.setWheels(6)
+console.log(bmw.wheels)
+bmw.wheels = 5
+console.log(bmw.wheels)
+bmw.wheels(6)
