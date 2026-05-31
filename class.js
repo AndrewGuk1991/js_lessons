@@ -123,6 +123,29 @@ class Car {
 // bmw.wheels = 5
 // console.log(bmw.wheels)
 
-const bmw = new Car('bmw', 200)
-const kia = new Car('kia', 150)
-Car.compareCars(bmw, kia)
+// const bmw = new Car('bmw', 200)
+// const kia = new Car('kia', 150)
+// Car.compareCars(bmw, kia)
+
+
+class SuperCar extends Car {
+    constructor(brand, maxSpeed, isFly) {
+        // this = {}
+        // Cac.constructor.apply(this)
+        super(brand, maxSpeed)
+        this.isFly = isFly
+    }
+    // fly() {
+    //     console.log(`${this.brand} is fly`)
+    // }
+    startEngine () {
+        super.startEngine()
+        console.log(`${this.brand} is fly`)
+    }
+}
+
+const superBmw = new SuperCar('super-bmw', 200, true)
+superBmw.startEngine()
+// superBmw.fly()
+const superKia = new SuperCar('super-kia', 170, true)
+SuperCar.compareCars(superKia, superBmw)
