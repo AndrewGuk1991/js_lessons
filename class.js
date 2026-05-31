@@ -109,10 +109,20 @@ class Car {
         return this.#wheels
     }
 
+    static compareCars(car1, car2) {
+        car1.maxSpeed === car2.maxSpeed
+            ? console.log(`Cars have same speed`)
+                : car1.maxSpeed > car2.maxSpeed
+                    ? console.log(`${car1.brand} is faster`)
+                        : console.log(`${car2.brand} is faster`)
+    }
 }
 
+// const bmw = new Car('bmw', 200)
+// console.log(bmw.wheels)
+// bmw.wheels = 5
+// console.log(bmw.wheels)
+
 const bmw = new Car('bmw', 200)
-console.log(bmw.wheels)
-bmw.wheels = 5
-console.log(bmw.wheels)
-bmw.wheels(6)
+const kia = new Car('kia', 150)
+Car.compareCars(bmw, kia)
