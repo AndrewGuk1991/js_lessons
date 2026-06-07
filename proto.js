@@ -45,10 +45,58 @@
 //
 // console.log(typeof b)
 //
-const arr = []
-const arr2 = new Array([])
+// const arr = []
+// const arr2 = new Array([])
+//
+// console.log(arr.__proto__ === Array.prototype)
+// console.log(arr2.__proto__ === Array.prototype)
+// console.log(arr.__proto__ === arr2.__proto__)
 
-console.log(arr.__proto__ === Array.prototype)
-console.log(arr2.__proto__ === Array.prototype)
-console.log(arr.__proto__ === arr2.__proto__)
+
+class Car {
+    constructor(brand, maxSpeed) {
+        this.brand = brand
+        this.maxSpeed = maxSpeed
+    }
+
+    startEngine() {
+        console.log(`${this.brand} started`)
+    }
+
+    stopEngine = () => {
+        console.log(`${this.brand} stopped`)
+    }
+}
+
+// console.log(Car.prototype.__proto__ === Object.prototype)
+
+const foo = () => {}
+function foo2() {}
+const foo3 = function() {}
+
+// console.log(foo.__proto__ === Function.prototype)
+// console.log(foo2.__proto__ === Function.prototype)
+// console.log(foo3.__proto__ === Function.prototype)
+
+// console.log(Function.prototype.__proto__ === Object.prototype)
+
+// console.log(Car.__proto__ === Function.prototype)
+// console.log(Number.__proto__ === Function.prototype)
+// console.log(Array.__proto__ === Function.prototype)
+// console.log(Object.__proto__ === Function.prototype)
+
+
+// console.log(Function.__proto__ === Function.prototype)
+//
+// console.log(Object.prototype.__proto__ === null)
+
+const car1 = new Car('bmw', 200)
+// console.log(car1.__proto__ === Car.prototype)
+// console.log(car1.__proto__.__proto__ === Object.prototype)
+// console.log(car1.__proto__.__proto__.__proto__ === null)
+console.log(Function.__proto__ === Function.prototype)
+
+
+
+
 
