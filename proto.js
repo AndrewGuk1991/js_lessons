@@ -52,27 +52,11 @@
 // console.log(arr2.__proto__ === Array.prototype)
 // console.log(arr.__proto__ === arr2.__proto__)
 
-
-class Car {
-    constructor(brand, maxSpeed) {
-        this.brand = brand
-        this.maxSpeed = maxSpeed
-    }
-
-    startEngine() {
-        console.log(`${this.brand} started`)
-    }
-
-    stopEngine = () => {
-        console.log(`${this.brand} stopped`)
-    }
-}
-
 // console.log(Car.prototype.__proto__ === Object.prototype)
 
-const foo = () => {}
-function foo2() {}
-const foo3 = function() {}
+// const foo = () => {}
+// function foo2() {}
+// const foo3 = function() {}
 
 // console.log(foo.__proto__ === Function.prototype)
 // console.log(foo2.__proto__ === Function.prototype)
@@ -90,13 +74,51 @@ const foo3 = function() {}
 //
 // console.log(Object.prototype.__proto__ === null)
 
-const car1 = new Car('bmw', 200)
+// const car1 = new Car('bmw', 200)
 // console.log(car1.__proto__ === Car.prototype)
 // console.log(car1.__proto__.__proto__ === Object.prototype)
 // console.log(car1.__proto__.__proto__.__proto__ === null)
-console.log(Function.__proto__ === Function.prototype)
+// console.log(Function.__proto__ === Function.prototype)
 
 
 
+class Car {
+    constructor(brand, color, speed) {
+        this.brand = brand
+    }
+
+    startEngine() {
+        console.log(`${this.brand} started`)
+    }
+
+    static compareCars(car1, car2) {
+        car1.speed > car2.speed
+            ? console.log(`${car1.brand} is faster`)
+            : console.log(`${car2.brand} is faster`)
+    }
+}
+
+class SuperCar extends Car {
+    constructor(brand, canFly) {
+        super(brand)
+        this.canFly = canFly
+    }
+    fly() {
+        console.log(`${this.brand} flying`)
+    }
+}
+
+const superCar = new SuperCar('super-opel', true)
 
 
+const car1 = new Car('opel', 180)
+
+// console.log(car1.__proto__.__proto__ === Object.prototype)
+// console.log(car1.__proto__.__proto__.__proto__ === null)
+
+
+// console.log(superCar.__proto__ === SuperCar.prototype)
+// console.log(SuperCar.prototype.__proto__ === Car.prototype)
+// console.log(SuperCar.__proto__.__proto__ === Function.prototype)
+// console.log(superCar.__proto__.__proto__ === Car.prototype)
+console.log(superCar.__proto__.__proto__.__proto__ === Object.prototype)
