@@ -82,36 +82,39 @@
 
 
 
-class Car {
-    constructor(brand, color, speed) {
-        this.brand = brand
-    }
-
-    startEngine() {
-        console.log(`${this.brand} started`)
-    }
-
-    static compareCars(car1, car2) {
-        car1.speed > car2.speed
-            ? console.log(`${car1.brand} is faster`)
-            : console.log(`${car2.brand} is faster`)
-    }
-}
-
-class SuperCar extends Car {
-    constructor(brand, canFly) {
-        super(brand)
-        this.canFly = canFly
-    }
-    fly() {
-        console.log(`${this.brand} flying`)
-    }
-}
-
-const superCar = new SuperCar('super-opel', true)
-
-
-const car1 = new Car('opel', 180)
+// class Car {
+//     constructor(brand, color, speed) {
+//         this.brand = brand
+//     }
+//
+//     startEngine() {
+//         console.log(`${this.brand} started`)
+//     }
+//
+//     static compareCars(car1, car2) {
+//         car1.speed > car2.speed
+//             ? console.log(`${car1.brand} is faster`)
+//             : console.log(`${car2.brand} is faster`)
+//     }
+// }
+//
+// class SuperCar extends Car {
+//     constructor(brand, canFly) {
+//         super(brand)
+//         this.canFly = canFly
+//     }
+//     fly() {
+//         console.log(`${this.brand} flying`)
+//     }
+// }
+//
+//
+// const car1 = new Car('opel', 180)
+// const car2 = new Car('bmw', 200)
+//
+// const superCar = new SuperCar('super-opel', true)
+//
+// console.log(superCar.__proto__ === SuperCar.prototype)
 
 // console.log(car1.__proto__.__proto__ === Object.prototype)
 // console.log(car1.__proto__.__proto__.__proto__ === null)
@@ -121,4 +124,54 @@ const car1 = new Car('opel', 180)
 // console.log(SuperCar.prototype.__proto__ === Car.prototype)
 // console.log(SuperCar.__proto__.__proto__ === Function.prototype)
 // console.log(superCar.__proto__.__proto__ === Car.prototype)
-console.log(superCar.__proto__.__proto__.__proto__ === Object.prototype)
+// console.log(superCar.__proto__.__proto__.__proto__.__proto__ === null)
+
+// console.log(superCar.__proto__.__proto__ === Car.prototype)
+
+
+function CarCreator (brand, maxSpeed)  {
+    this.brand = brand
+    this.maxSpeed = maxSpeed
+
+}
+
+CarCreator.prototype = {
+    startEngine () {
+        console.log(`${this.brand} started`)
+    }
+}
+
+CarCreator.compareCars = function (car1, car2) {
+    if (!car1?.maxSpeed || !car2?.maxSpeed) {
+        console.log("Error: Invalid car objects");
+        return;
+    }
+
+    if (car1.maxSpeed > car2.maxSpeed) {
+        console.log(`${car1.brand} is faster`);
+    } else if (car1.maxSpeed < car2.maxSpeed) {
+        console.log(`${car2.brand} is faster`);
+    } else {
+        console.log(`${car1.brand} and ${car2.brand} speeds are equal`);
+    }
+}
+
+const bmw = new CarCreator('bmw', 200)
+// bmw.startEngine()
+
+function SuperCarCreator (brand, maxSpeed, canFly)  {
+    CarCreator.call(this, brand, maxSpeed)
+    this.canFly = canFly
+}
+
+SuperCarCreator.__proto__ = CarCreator
+SuperCarCreator.prototype.__proto__ = CarCreator.prototype
+
+const superBmw = new SuperCarCreator('superBmw', 200, true)
+const superOPel = new SuperCarCreator('superOPel', 250, true)
+
+SuperCarCreator.compareCars(superBmw, superOPel)
+
+
+
+
